@@ -34,16 +34,16 @@ LvLabel& LvLabel::setLongMode(lv_label_long_mode_t long_mode){
 	lv_label_set_long_mode(cObj.get(),long_mode);
 	return *this;
 }
-LvLabel& LvLabel::setRecolor(bool en){
-	lv_label_set_recolor(cObj.get(),en);
-	return *this;
-}
+// LvLabel& LvLabel::setRecolor(bool en){
+// 	lv_label_set_recolor(cObj.get(),en);
+// 	return *this;
+// }
 LvLabel& LvLabel::setTextSelStart(uint32_t index){
-	lv_label_set_text_sel_start(cObj.get(),index);
+	lv_label_get_text_selection_start(cObj.get(),index);
 	return *this;
 }
 LvLabel& LvLabel::setTextSelEnd(uint32_t index){
-	lv_label_set_text_sel_end(cObj.get(),index);
+	lv_label_get_text_selection_start(cObj.get(),index);
 	return *this;
 }
 char *LvLabel::getText() const noexcept {
@@ -54,16 +54,16 @@ lv_label_long_mode_t LvLabel::getLongMode() const noexcept {
 	return lv_label_get_long_mode(cObj.get());
 	
 }
-bool LvLabel::getRecolor() const noexcept {
-	return lv_label_get_recolor(cObj.get());
+// bool LvLabel::getRecolor() const noexcept {
+// 	return lv_label_get_recolor(cObj.get());
 	
-}
+// }
 LvLabel& LvLabel::getLetterPos(uint32_t char_id, lv_point_t *pos){
 	lv_label_get_letter_pos(cObj.get(),char_id,pos);
 	return *this;
 }
-uint32_t LvLabel::getLetterOn(lv_point_t *pos_in) const noexcept {
-	return lv_label_get_letter_on(cObj.get(),pos_in);
+uint32_t LvLabel::getLetterOn(lv_point_t *pos_in,bool bidi) const noexcept {
+	return lv_label_get_letter_on(cObj.get(),pos_in, bidi);
 	
 }
 bool LvLabel::isCharUnderPos(lv_point_t *pos){

@@ -15,7 +15,7 @@ public:
 	LvAnimimg();
 	LvAnimimg(LvObj* Parent);
 	virtual ~LvAnimimg() override;
-	LvAnimimg& setSrc(lv_img_dsc_t *dsc[], uint8_t num);
+	LvAnimimg& setSrc(const void *dsc[], uint8_t num);
 	LvAnimimg& start();
 	LvAnimimg& setDuration(uint32_t duration);
 	LvAnimimg& setRepeatCount(uint16_t count);

@@ -8,7 +8,7 @@
 namespace lvglpp {
 
 LvAnim::LvAnim() {
-	cObj.reset((lv_anim_t*)lv_mem_alloc(sizeof(lv_anim_t)));
+	cObj.reset((lv_anim_t*)lv_malloc(sizeof(lv_anim_t)));
 	init();
 }
 
@@ -91,7 +91,7 @@ void *LvAnim::getUserData() const noexcept {
 	
 }
 bool LvAnim::customDel(lv_anim_custom_exec_cb_t exec_cb){
-	return lv_anim_custom_del(cObj.get(),exec_cb);
+	return lv_anim_custom_delete(cObj.get(),exec_cb);
 	
 }
 LvAnim& LvAnim::init(){

@@ -12,9 +12,9 @@ LvBtnmatrix::LvBtnmatrix() : LvBtnmatrix(NULL) {
 
 LvBtnmatrix::LvBtnmatrix(LvObj* Parent) : LvObj(Parent) {
 	if(Parent)
-		cObj.reset(lv_btnmatrix_create(Parent->raw()));
+		cObj.reset(lv_buttonmatrix_create(Parent->raw()));
 	else
-		cObj.reset(lv_btnmatrix_create(lv_scr_act()));
+		cObj.reset(lv_buttonmatrix_create(lv_scr_act()));
 
 	setUserData(this);
 }
@@ -22,59 +22,59 @@ LvBtnmatrix::LvBtnmatrix(LvObj* Parent) : LvObj(Parent) {
 LvBtnmatrix::~LvBtnmatrix() {
 }
 LvBtnmatrix& LvBtnmatrix::setMap(const char *map[]){
-	lv_btnmatrix_set_map(cObj.get(),map);
+	lv_buttonmatrix_set_map(cObj.get(),map);
 	return *this;
 }
-LvBtnmatrix& LvBtnmatrix::setCtrlMap(const lv_btnmatrix_ctrl_t ctrl_map[]){
-	lv_btnmatrix_set_ctrl_map(cObj.get(),ctrl_map);
+LvBtnmatrix& LvBtnmatrix::setCtrlMap(const lv_buttonmatrix_ctrl_t ctrl_map[]){
+	lv_buttonmatrix_set_ctrl_map(cObj.get(),ctrl_map);
 	return *this;
 }
-LvBtnmatrix& LvBtnmatrix::setSelectedBtn(uint16_t btn_id){
-	lv_btnmatrix_set_selected_btn(cObj.get(),btn_id);
+// LvBtnmatrix& LvBtnmatrix::setSelectedBtn(uint32_t btn_id){
+// 	lv_button_matrix_set_selected_button(cObj.get(),btn_id);
+// 	return *this;
+// }
+LvBtnmatrix& LvBtnmatrix::setBtnCtrl(uint32_t btn_id, lv_buttonmatrix_ctrl_t ctrl){
+	lv_buttonmatrix_set_button_ctrl(cObj.get(),btn_id,ctrl);
 	return *this;
 }
-LvBtnmatrix& LvBtnmatrix::setBtnCtrl(uint16_t btn_id, lv_btnmatrix_ctrl_t ctrl){
-	lv_btnmatrix_set_btn_ctrl(cObj.get(),btn_id,ctrl);
+LvBtnmatrix& LvBtnmatrix::clearBtnCtrl(uint32_t btn_id, lv_buttonmatrix_ctrl_t ctrl){
+	lv_buttonmatrix_clear_button_ctrl(cObj.get(),btn_id,ctrl);
 	return *this;
 }
-LvBtnmatrix& LvBtnmatrix::clearBtnCtrl(uint16_t btn_id, lv_btnmatrix_ctrl_t ctrl){
-	lv_btnmatrix_clear_btn_ctrl(cObj.get(),btn_id,ctrl);
+LvBtnmatrix& LvBtnmatrix::setBtnCtrlAll(lv_buttonmatrix_ctrl_t ctrl){
+	lv_buttonmatrix_set_button_ctrl_all(cObj.get(),ctrl);
 	return *this;
 }
-LvBtnmatrix& LvBtnmatrix::setBtnCtrlAll(lv_btnmatrix_ctrl_t ctrl){
-	lv_btnmatrix_set_btn_ctrl_all(cObj.get(),ctrl);
+LvBtnmatrix& LvBtnmatrix::clearBtnCtrlAll(lv_buttonmatrix_ctrl_t ctrl){
+	lv_buttonmatrix_clear_button_ctrl_all(cObj.get(),ctrl);
 	return *this;
 }
-LvBtnmatrix& LvBtnmatrix::clearBtnCtrlAll(lv_btnmatrix_ctrl_t ctrl){
-	lv_btnmatrix_clear_btn_ctrl_all(cObj.get(),ctrl);
-	return *this;
-}
-LvBtnmatrix& LvBtnmatrix::setBtnWidth(uint16_t btn_id, uint8_t width){
-	lv_btnmatrix_set_btn_width(cObj.get(),btn_id,width);
+LvBtnmatrix& LvBtnmatrix::setBtnWidth(uint32_t btn_id, uint8_t width){
+	lv_buttonmatrix_set_button_width(cObj.get(),btn_id,width);
 	return *this;
 }
 LvBtnmatrix& LvBtnmatrix::setOneChecked(bool en){
-	lv_btnmatrix_set_one_checked(cObj.get(),en);
+	lv_buttonmatrix_set_one_checked(cObj.get(),en);
 	return *this;
 }
 const char **LvBtnmatrix::getMap() const noexcept {
-	return lv_btnmatrix_get_map(cObj.get());
+	return lv_buttonmatrix_get_map(cObj.get());
 	
 }
-uint16_t LvBtnmatrix::getSelectedBtn() const noexcept {
-	return lv_btnmatrix_get_selected_btn(cObj.get());
+uint32_t LvBtnmatrix::getSelectedBtn() const noexcept {
+	return lv_buttonmatrix_get_selected_button(cObj.get());
 	
 }
-const char *LvBtnmatrix::getBtnText(uint16_t btn_id) const noexcept {
-	return lv_btnmatrix_get_btn_text(cObj.get(),btn_id);
+const char *LvBtnmatrix::getBtnText(uint32_t btn_id) const noexcept {
+	return lv_buttonmatrix_get_button_text(cObj.get(),btn_id);
 	
 }
-bool LvBtnmatrix::hasBtnCtrl(uint16_t btn_id, lv_btnmatrix_ctrl_t ctrl){
-	return lv_btnmatrix_has_btn_ctrl(cObj.get(),btn_id,ctrl);
+bool LvBtnmatrix::hasBtnCtrl(uint32_t button_id, lv_buttonmatrix_ctrl_t ctrl){
+	return lv_buttonmatrix_has_button_ctrl(cObj.get(),button_id,ctrl);
 	
 }
 bool LvBtnmatrix::getOneChecked() const noexcept {
-	return lv_btnmatrix_get_one_checked(cObj.get());
+	return lv_buttonmatrix_get_one_checked(cObj.get());
 	
 }
 
