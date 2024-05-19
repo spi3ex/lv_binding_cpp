@@ -158,7 +158,7 @@ static void do_register(void)
 
     /*Finally register the driver*/
     lv_windows_disp = lv_disp_drv_register(&disp_drv);
-    static lv_indev_drv_t indev_drv;
+    static lv_indev_data_t indev_drv;
     lv_indev_drv_init(&indev_drv);
     indev_drv.type = LV_INDEV_TYPE_POINTER;
     indev_drv.read_cb = win_drv_read;

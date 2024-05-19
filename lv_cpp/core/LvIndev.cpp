@@ -43,7 +43,7 @@ LvInput::LvInput() :
 
 }
 
-LvInput::LvInput(lv_indev_drv_t *drv) {
+LvInput::LvInput(lv_indev_data_t *drv) {
 
 	lv_indev_drv_init(&indev_drv); /*Basic initialization*/
 
@@ -74,7 +74,7 @@ LvInput::LvInput(lv_indev_drv_t *drv) {
 #endif
 
 	} else {
-		memcpy(&indev_drv, drv, sizeof(lv_indev_drv_t));
+		memcpy(&indev_drv, drv, sizeof(lv_indev_data_t));
 	}
 
 	indev.reset(lv_indev_drv_register(&indev_drv));

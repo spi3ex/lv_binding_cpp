@@ -39,14 +39,14 @@ LvDisplay::LvDisplay(lv_display_t *drv) :
 
 }
 
-LvDisplay::LvDisplay(lv_display_t *drv, unsigned int hres, unsigned int vres) {
+LvDisplay::LvDisplay(lv_display_t *drv, int32_t hres, int32_t vres) {
 
 	disp_drv.reset((lv_display_t*)lv_malloc(sizeof(lv_display_t)));
 	disp_buf1.reset((lv_disp_draw_buf_t*)lv_malloc(sizeof(lv_disp_draw_buf_t)));
 
 	lv_display_drv_init(disp_drv.get());
-	uint32_t w = 0;
-	uint32_t h = 0;
+	int32_t w = 0;
+	int32_t h = 0;
 
 #if USE_MONITOR
 	monitor_init();
@@ -90,7 +90,7 @@ LvDisplay::LvDisplay(lv_display_t *drv, unsigned int hres, unsigned int vres) {
 		disp_drv->sw_rotate = 1;
 		disp_drv->hor_res = w;
 		disp_drv->ver_res = h;
-		disp_drv->rotated = LV_DISP_ROT_NONE;
+		disp_drv->rotated = LV_DISPLAY_ROTATION_0;
 	} else
 		memcpy(disp_drv.get(), drv, sizeof(lv_display_t));
 	disp.reset(lv_disp_drv_register(disp_drv.get()));
@@ -104,25 +104,25 @@ LvDisplay::~LvDisplay() {
 
 LvDisplay& LvDisplay::Rotate() {
 
-	lv_disp_rot_t rot = LV_DISP_ROT_NONE;
-	lv_disp_rot_t future_rot = LV_DISP_ROT_NONE;
+	lv_display_rotation_t rot = LV_DISPLAY_ROTATION_0;
+	lv_display_rotation_t future_rot = LV_DISPLAY_ROTATION_0;
 	rot = lv_disp_get_rotation(disp.get());
 
 	switch (rot) {
-	case LV_DISP_ROT_NONE:
-		future_rot = LV_DISP_ROT_90;
+	case LV_DISPLAY_ROTATION_0:
+		future_rot = LV_DISPLAY_ROTATION_90;
 		break;
 
-	case LV_DISP_ROT_90:
-		future_rot = LV_DISP_ROT_180;
+	case LV_DISPLAY_ROTATION_90:
+		future_rot = LV_DISPLAY_ROTATION_180;
 		break;
 
-	case LV_DISP_ROT_180:
-		future_rot = LV_DISP_ROT_270;
+	case LV_DISPLAY_ROTATION_180:
+		future_rot = LV_DISPLAY_ROTATION_270;
 		break;
 
-	case LV_DISP_ROT_270:
-		future_rot = LV_DISP_ROT_NONE;
+	case LV_DISPLAY_ROTATION_270:
+		future_rot = LV_DISPLAY_ROTATION_0;
 		break;
 	}
 
@@ -132,9 +132,9 @@ LvDisplay& LvDisplay::Rotate() {
 
 }
 
-LvDisplay& LvDisplay::Rotate(unsigned int deg) {
+LvDisplay& LvDisplay::Rotate(int32_t deg) {
 
-	unsigned int rotstep = 1;
+	int32_t rotstep = 1;
 
 	if (deg % 90 == 0) {
 		rotstep = deg / 90;
@@ -146,11 +146,11 @@ LvDisplay& LvDisplay::Rotate(unsigned int deg) {
 
 }
 
-unsigned int LvDisplay::getWidth() {
+int32_t LvDisplay::getWidth() {
 	return disp_drv->hor_res;
 }
 
-unsigned int LvDisplay::getHeight() {
+int32_t LvDisplay::getHeight() {
 	return disp_drv->ver_res;
 }
 
