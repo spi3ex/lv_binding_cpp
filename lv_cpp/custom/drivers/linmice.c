@@ -64,7 +64,7 @@ void linmice_init(void) {
  * @param data store the mouse data here
  * @return false: because the points are not buffered, so no more data to be read
  */
-void linmice_read(lv_indev_drv_t *indev_drv, lv_indev_data_t *data) {
+void linmice_read(lv_indev_data_t *indev_drv, lv_indev_data_t *data) {
 	(void) indev_drv; /*Unused*/
 
 	int left = 0, middle = 0, right = 0, bytes = 0;

@@ -19,7 +19,7 @@ lv_anim_timeline_t* LvAnimTimeline::raw() {
 	return cObj.get();
 }
 LvAnimTimeline& LvAnimTimeline::del(){
-	lv_anim_timeline_del(cObj.get());
+	lv_anim_timeline_delete(cObj.get());
 	return *this;
 }
 LvAnimTimeline& LvAnimTimeline::add(uint32_t start_time, LvAnim *a){
@@ -31,7 +31,7 @@ uint32_t LvAnimTimeline::start(){
 	
 }
 LvAnimTimeline& LvAnimTimeline::stop(){
-	lv_anim_timeline_stop(cObj.get());
+	lv_anim_timeline_pause(cObj.get());
 	return *this;
 }
 LvAnimTimeline& LvAnimTimeline::setReverse(bool reverse){

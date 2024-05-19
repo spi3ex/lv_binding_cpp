@@ -31,7 +31,7 @@ public:
 	lv_label_long_mode_t getLongMode() const noexcept ;
 	bool getRecolor() const noexcept ;
 	LvLabel& getLetterPos(uint32_t char_id, lv_point_t *pos);
-	uint32_t getLetterOn(lv_point_t *pos_in) const noexcept ;
+	uint32_t getLetterOn(lv_point_t *pos_in, bool bidi) const noexcept ;
 	bool isCharUnderPos(lv_point_t *pos);
 	uint32_t getTextSelectionStart() const noexcept ;
 	uint32_t getTextSelectionEnd() const noexcept ;

@@ -1,10 +1,10 @@
 /**
- * @file linmice.h
+ * @file fbdev.h
  *
  */
 
-#ifndef LINMICE_H
-#define LINMICE_H
+#ifndef FBDEV_H
+#define FBDEV_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -15,13 +15,13 @@ extern "C" {
  *********************/
 #ifndef LV_DRV_NO_CONF
 #ifdef LV_CONF_INCLUDE_SIMPLE
-#include <lv_drv_conf.h>
+#include "lv_drv_conf.h"
 #else
-#include <lv_drv_conf.h>
+#include "../../lv_drv_conf.h"
 #endif
 #endif
 
-#if USE_LINMICE
+#if USE_FBDEV || USE_BSD_FBDEV
 
 #ifdef LV_LVGL_H_INCLUDE_SIMPLE
 #include "lvgl.h"
@@ -40,29 +40,20 @@ extern "C" {
 /**********************
  * GLOBAL PROTOTYPES
  **********************/
-
-/**
- * Initialize the mouse
- */
-void linmice_init(void);
-
-/**
- * Get the current position and state of the mouse/touchpad
- * @param indev_drv pointer to the related input device driver
- * @param data store the mouse data here
- * @return false: because the points are not buffered, so no more data to be read
- */
-void linmice_read(lv_indev_data_t * indev_drv, lv_indev_data_t * data);
+void fbdev_init(void);
+void fbdev_exit(void);
+void fbdev_flush(lv_display_t * drv, const lv_area_t * area, lv_color_t * color_p);
+void fbdev_get_sizes(uint32_t *width, uint32_t *height);
 
 
 /**********************
  *      MACROS
  **********************/
 
-#endif /* USE_LINMICE */
+#endif  /*USE_FBDEV*/
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
 
-#endif /* LINMICE_H */
+#endif /*FBDEV_H*/

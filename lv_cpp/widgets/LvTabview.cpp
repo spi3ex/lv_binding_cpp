@@ -13,7 +13,7 @@ LvTabview::LvTabview() : LvTabview(NULL) {
 LvTabview::LvTabview(LvObj* Parent) : LvTabview(Parent,LV_DIR_TOP,100) {
 }
 
-LvTabview::LvTabview(LvObj* Parent,lv_dir_t tab_pos,lv_coord_t tab_size) : LvObj(Parent) {
+LvTabview::LvTabview(LvObj* Parent,lv_dir_t tab_pos,lv_grid_align_t tab_size) : LvObj(Parent) {
 	if(Parent)
 		cObj.reset(lv_tabview_create(Parent->raw(),tab_pos, tab_size));
 	else

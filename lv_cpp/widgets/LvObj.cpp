@@ -161,7 +161,7 @@ lv_theme_t *LvObj::getTheme() const noexcept {
 	return lv_theme_get_from_obj(cObj.get());
 	
 }
-struct lv_event_dsc_t *LvObj::addEventCb(lv_event_cb_t event_cb, lv_event_code_t filter, void *user_data){
+struct _lv_event_dsc_t *LvObj::addEventCb(lv_event_cb_t event_cb, lv_event_code_t filter, void *user_data){
 	return lv_obj_add_event_cb(cObj.get(),event_cb,filter,user_data);
 	
 }
@@ -173,7 +173,7 @@ bool LvObj::removeEventCbWithUserData(lv_event_cb_t event_cb, const void *user_d
 	return lv_obj_remove_event_cb_with_user_data(cObj.get(),event_cb,user_data);
 	
 }
-bool LvObj::removeEventDsc(lv_event_dsc_t *event_dsc){
+bool LvObj::removeEventDsc(struct lv_event_dsc_t *event_dsc){
 	return lv_obj_remove_event_dsc(cObj.get(),event_dsc);
 	
 }
@@ -305,19 +305,19 @@ int32_t LvObj::getScrollRight() const noexcept {
 	return lv_obj_get_scroll_right(cObj.get());
 	
 }
-LvObj& LvObj::scrollBy(int32_t x, int32_t y, lv_anim_enable_t anim_en){
+LvObj& LvObj::scrollBy(lv_grid_align_t x, lv_grid_align_t y, lv_anim_enable_t anim_en){
 	lv_obj_scroll_by(cObj.get(),x,y,anim_en);
 	return *this;
 }
-LvObj& LvObj::scrollTo(int32_t x, int32_t y, lv_anim_enable_t anim_en){
+LvObj& LvObj::scrollTo(lv_grid_align_t x, lv_grid_align_t y, lv_anim_enable_t anim_en){
 	lv_obj_scroll_to(cObj.get(),x,y,anim_en);
 	return *this;
 }
-LvObj& LvObj::scrollToX(int32_t x, lv_anim_enable_t anim_en){
+LvObj& LvObj::scrollToX(lv_grid_align_t x, lv_anim_enable_t anim_en){
 	lv_obj_scroll_to_x(cObj.get(),x,anim_en);
 	return *this;
 }
-LvObj& LvObj::scrollToY(int32_t y, lv_anim_enable_t anim_en){
+LvObj& LvObj::scrollToY(lv_grid_align_t y, lv_anim_enable_t anim_en){
 	lv_obj_scroll_to_y(cObj.get(),y,anim_en);
 	return *this;
 }
@@ -361,15 +361,15 @@ LvObj& LvObj::lvGroupFocusObj(){
 	lv_group_focus_obj(cObj.get());
 	return *this;
 }
-LvObj& LvObj::setPos(int32_t x, int32_t y){
+LvObj& LvObj::setPos(lv_grid_align_t x, lv_grid_align_t y){
 	lv_obj_set_pos(cObj.get(),x,y);
 	return *this;
 }
-LvObj& LvObj::setX(int32_t x){
+LvObj& LvObj::setX(lv_grid_align_t x){
 	lv_obj_set_x(cObj.get(),x);
 	return *this;
 }
-LvObj& LvObj::setY(int32_t y){
+LvObj& LvObj::setY(lv_grid_align_t y){
 	lv_obj_set_y(cObj.get(),y);
 	return *this;
 }
@@ -377,23 +377,23 @@ bool LvObj::refrSize(){
 	return lv_obj_refr_size(cObj.get());
 	
 }
-LvObj& LvObj::setSize(int32_t w, int32_t h){
+LvObj& LvObj::setSize(lv_grid_align_t w, lv_grid_align_t h){
 	lv_obj_set_size(cObj.get(),w,h);
 	return *this;
 }
-LvObj& LvObj::setWidth(int32_t w){
+LvObj& LvObj::setWidth(lv_grid_align_t w){
 	lv_obj_set_width(cObj.get(),w);
 	return *this;
 }
-LvObj& LvObj::setHeight(int32_t h){
+LvObj& LvObj::setHeight(lv_grid_align_t h){
 	lv_obj_set_height(cObj.get(),h);
 	return *this;
 }
-LvObj& LvObj::setContentWidth(int32_t w){
+LvObj& LvObj::setContentWidth(lv_grid_align_t w){
 	lv_obj_set_content_width(cObj.get(),w);
 	return *this;
 }
-LvObj& LvObj::setContentHeight(int32_t h){
+LvObj& LvObj::setContentHeight(lv_grid_align_t h){
 	lv_obj_set_content_height(cObj.get(),h);
 	return *this;
 }
@@ -417,11 +417,11 @@ LvObj& LvObj::setAlign(lv_align_t align){
 	lv_obj_set_align(cObj.get(),align);
 	return *this;
 }
-LvObj& LvObj::align(lv_align_t align, int32_t x_ofs, int32_t y_ofs){
+LvObj& LvObj::align(lv_align_t align, lv_grid_align_t x_ofs, lv_grid_align_t y_ofs){
 	lv_obj_align(cObj.get(),align,x_ofs,y_ofs);
 	return *this;
 }
-LvObj& LvObj::alignTo(const lv_obj_t *base, lv_align_t align, int32_t x_ofs, int32_t y_ofs){
+LvObj& LvObj::alignTo(const lv_obj_t *base, lv_align_t align, lv_grid_align_t x_ofs, lv_grid_align_t y_ofs){
 	lv_obj_align_to(cObj.get(),base,align,x_ofs,y_ofs);
 	return *this;
 }
@@ -429,35 +429,35 @@ LvObj& LvObj::getCoords(lv_area_t *coords){
 	lv_obj_get_coords(cObj.get(),coords);
 	return *this;
 }
-int32_t LvObj::getX() const noexcept {
+lv_grid_align_t LvObj::getX() const noexcept {
 	return lv_obj_get_x(cObj.get());
 	
 }
-int32_t LvObj::getX2() const noexcept {
+lv_grid_align_t LvObj::getX2() const noexcept {
 	return lv_obj_get_x2(cObj.get());
 	
 }
-int32_t LvObj::getY() const noexcept {
+lv_grid_align_t LvObj::getY() const noexcept {
 	return lv_obj_get_y(cObj.get());
 	
 }
-int32_t LvObj::getY2() const noexcept {
+lv_grid_align_t LvObj::getY2() const noexcept {
 	return lv_obj_get_y2(cObj.get());
 	
 }
-int32_t LvObj::getWidth() const noexcept {
+lv_grid_align_t LvObj::getWidth() const noexcept {
 	return lv_obj_get_width(cObj.get());
 	
 }
-int32_t LvObj::getHeight() const noexcept {
+lv_grid_align_t LvObj::getHeight() const noexcept {
 	return lv_obj_get_height(cObj.get());
 	
 }
-int32_t LvObj::getContentWidth() const noexcept {
+lv_grid_align_t LvObj::getContentWidth() const noexcept {
 	return lv_obj_get_content_width(cObj.get());
 	
 }
-int32_t LvObj::getContentHeight() const noexcept {
+lv_grid_align_t LvObj::getContentHeight() const noexcept {
 	return lv_obj_get_content_height(cObj.get());
 	
 }
@@ -465,11 +465,11 @@ LvObj& LvObj::getContentCoords(lv_area_t *area){
 	lv_obj_get_content_coords(cObj.get(),area);
 	return *this;
 }
-int32_t LvObj::getSelfWidth() const noexcept {
+lv_grid_align_t LvObj::getSelfWidth() const noexcept {
 	return lv_obj_get_self_width(cObj.get());
 	
 }
-int32_t LvObj::getSelfHeight() const noexcept {
+lv_grid_align_t LvObj::getSelfHeight() const noexcept {
 	return lv_obj_get_self_height(cObj.get());
 	
 }
@@ -481,11 +481,11 @@ LvObj& LvObj::refrPos(){
 	lv_obj_refr_pos(cObj.get());
 	return *this;
 }
-LvObj& LvObj::moveTo(int32_t x, int32_t y){
+LvObj& LvObj::moveTo(lv_grid_align_t x, lv_grid_align_t y){
 	lv_obj_move_to(cObj.get(),x,y);
 	return *this;
 }
-LvObj& LvObj::moveChildrenBy(int32_t x_diff, int32_t y_diff, bool ignore_floating){
+LvObj& LvObj::moveChildrenBy(lv_grid_align_t x_diff, lv_grid_align_t y_diff, bool ignore_floating){
 	lv_obj_move_children_by(cObj.get(),x_diff,y_diff,ignore_floating);
 	return *this;
 }
@@ -641,7 +641,7 @@ LvObj& LvObj::setStyleGridRowDscArray(const int32_t value[], lv_style_selector_t
 	lv_obj_set_style_grid_row_dsc_array(cObj.get(),value,selector);
 	return *this;
 }
-LvObj& LvObj::setStyleGridColumnDscArray(const int32_t value[], lv_style_selector_t selector){
+LvObj& LvObj::setStyleGridColumnDscArray(const lv_grid_align_t value[], lv_style_selector_t selector){
 	lv_obj_set_style_grid_column_dsc_array(cObj.get(),value,selector);
 	return *this;
 }
