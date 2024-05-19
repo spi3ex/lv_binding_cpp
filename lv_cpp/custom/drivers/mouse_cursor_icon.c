@@ -98,7 +98,7 @@ lv_image_dsc_t mouse_cursor_icon = {
     .header.always_zero = 0,
     .header.w = 14,
     .header.h = 20,
-    .data_size = 280 * LV_image_PX_SIZE_ALPHA_BYTE,
-    .header.cf = lv_color_format_tRUE_COLOR_ALPHA,
+    .data_size = sizeof(mouse_cursor_icon_map),
+    .header.cf = LV_COLOR_FORMAT_RAW_ALPHA,
     .data = mouse_cursor_icon_map,
 };
