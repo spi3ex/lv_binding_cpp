@@ -34,7 +34,7 @@ LvTable& LvTable::setColCnt(uint16_t col_cnt){
 	lv_table_set_col_cnt(cObj.get(),col_cnt);
 	return *this;
 }
-LvTable& LvTable::setColWidth(uint16_t col_id, lv_coord_t w){
+LvTable& LvTable::setColWidth(uint16_t col_id, lv_grid_align_t w){
 	lv_table_set_col_width(cObj.get(),col_id,w);
 	return *this;
 }
@@ -58,7 +58,7 @@ uint16_t LvTable::getColCnt() const noexcept {
 	return lv_table_get_col_cnt(cObj.get());
 	
 }
-lv_coord_t LvTable::getColWidth(uint16_t col) const noexcept {
+lv_grid_align_t LvTable::getColWidth(uint16_t col) const noexcept {
 	return lv_table_get_col_width(cObj.get(),col);
 	
 }

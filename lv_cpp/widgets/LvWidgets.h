@@ -7,7 +7,6 @@
 #define LVWIDGETS_H_
 
 
-#include "LvColorwheel.h" 
 #include "LvTable.h" 
 #include "LvLed.h" 
 #include "LvRoller.h" 
@@ -19,7 +18,7 @@
 #include "LvWin.h" 
 #include "LvSlider.h" 
 #include "LvImgbtn.h" 
-#include "LvMsgbox.h" 
+// #include "LvMsgbox.h" 
 #include "LvTextarea.h" 
 #include "LvChart.h" 
 #include "LvCalendar.h" 
@@ -28,7 +27,6 @@
 #include "LvCanvas.h" 
 #include "LvBar.h" 
 #include "LvArc.h" 
-#include "LvMeter.h" 
 #include "LvLabel.h" 
 #include "LvTabview.h" 
 #include "LvImg.h" 

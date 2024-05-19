@@ -9,7 +9,7 @@
 
 /* Default cursor for pointer */
 extern "C" {
-	LV_IMG_DECLARE(mouse_cursor_icon);
+	LV_image_DECLARE(mouse_cursor_icon);
 }
 
 #if (USE_MOUSE + USE_EVDEV + USE_LINMICE + USE_LIBINPUT) > 1
@@ -36,14 +36,14 @@ extern "C" {
 
 namespace lvglpp {
 
-lv_img_dsc_t idev_cursor_icon;
+lv_image_dsc_t idev_cursor_icon;
 
 LvInput::LvInput() :
 		LvInput(NULL) {
 
 }
 
-LvInput::LvInput(lv_indev_drv_t *drv) {
+LvInput::LvInput(lv_indev_data_t *drv) {
 
 	lv_indev_drv_init(&indev_drv); /*Basic initialization*/
 
@@ -74,7 +74,7 @@ LvInput::LvInput(lv_indev_drv_t *drv) {
 #endif
 
 	} else {
-		memcpy(&indev_drv, drv, sizeof(lv_indev_drv_t));
+		memcpy(&indev_drv, drv, sizeof(lv_indev_data_t));
 	}
 
 	indev.reset(lv_indev_drv_register(&indev_drv));

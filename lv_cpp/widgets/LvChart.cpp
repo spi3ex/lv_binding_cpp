@@ -29,7 +29,7 @@ LvChart& LvChart::setPointCount(uint16_t cnt){
 	lv_chart_set_point_count(cObj.get(),cnt);
 	return *this;
 }
-LvChart& LvChart::setRange(lv_chart_axis_t axis, lv_coord_t min, lv_coord_t max){
+LvChart& LvChart::setRange(lv_chart_axis_t axis, lv_grid_align_t min, lv_grid_align_t max){
 	lv_chart_set_range(cObj.get(),axis,min,max);
 	return *this;
 }
@@ -41,26 +41,26 @@ LvChart& LvChart::setDivLineCount(uint8_t hdiv, uint8_t vdiv){
 	lv_chart_set_div_line_count(cObj.get(),hdiv,vdiv);
 	return *this;
 }
-LvChart& LvChart::setZoomX(uint16_t zoom_x){
-	lv_chart_set_zoom_x(cObj.get(),zoom_x);
-	return *this;
-}
-LvChart& LvChart::setZoomY(uint16_t zoom_y){
-	lv_chart_set_zoom_y(cObj.get(),zoom_y);
-	return *this;
-}
-uint16_t LvChart::getZoomX() const noexcept {
-	return lv_chart_get_zoom_x(cObj.get());
+// LvChart& LvChart::setZoomX(uint16_t zoom_x){
+// 	lv_chart_set_zoom_x(cObj.get(),zoom_x);
+// 	return *this;
+// }
+// LvChart& LvChart::setZoomY(uint16_t zoom_y){
+// 	lv_chart_set_zoom_y(cObj.get(),zoom_y);
+// 	return *this;
+// }
+// uint16_t LvChart::getZoomX() const noexcept {
+// 	return lv_chart_get_zoom_x(cObj.get());
 	
-}
-uint16_t LvChart::getZoomY() const noexcept {
-	return lv_chart_get_zoom_y(cObj.get());
+// }
+// uint16_t LvChart::getZoomY() const noexcept {
+// 	return lv_chart_get_zoom_y(cObj.get());
 	
-}
-LvChart& LvChart::setAxisTick(lv_chart_axis_t axis, lv_coord_t major_len, lv_coord_t minor_len, lv_coord_t major_cnt, lv_coord_t minor_cnt, bool label_en, lv_coord_t draw_size){
-	lv_chart_set_axis_tick(cObj.get(),axis,major_len,minor_len,major_cnt,minor_cnt,label_en,draw_size);
-	return *this;
-}
+// }
+// LvChart& LvChart::setAxisTick(lv_chart_axis_t axis, lv_grid_align_t major_len, lv_grid_align_t minor_len, lv_grid_align_t major_cnt, lv_grid_align_t minor_cnt, bool label_en, lv_grid_align_t draw_size){
+// 	lv_chart_set_axis_tick(cObj.get(),axis,major_len,minor_len,major_cnt,minor_cnt,label_en,draw_size);
+// 	return *this;
+// }
 lv_chart_type_t LvChart::getType() const noexcept {
 	return lv_chart_get_type(cObj.get());
 	
@@ -121,39 +121,39 @@ lv_point_t LvChart::getCursorPoint(lv_chart_cursor_t *cursor) const noexcept {
 	return lv_chart_get_cursor_point(cObj.get(),cursor);
 	
 }
-LvChart& LvChart::setAllValue(lv_chart_series_t *ser, lv_coord_t value){
+LvChart& LvChart::setAllValue(lv_chart_series_t *ser, lv_grid_align_t value){
 	lv_chart_set_all_value(cObj.get(),ser,value);
 	return *this;
 }
-LvChart& LvChart::setNextValue(lv_chart_series_t *ser, lv_coord_t value){
+LvChart& LvChart::setNextValue(lv_chart_series_t *ser, lv_grid_align_t value){
 	lv_chart_set_next_value(cObj.get(),ser,value);
 	return *this;
 }
-LvChart& LvChart::setNextValue2(lv_chart_series_t *ser, lv_coord_t x_value, lv_coord_t y_value){
+LvChart& LvChart::setNextValue2(lv_chart_series_t *ser, lv_grid_align_t x_value, lv_grid_align_t y_value){
 	lv_chart_set_next_value2(cObj.get(),ser,x_value,y_value);
 	return *this;
 }
-LvChart& LvChart::setValueById(lv_chart_series_t *ser, uint16_t id, lv_coord_t value){
+LvChart& LvChart::setValueById(lv_chart_series_t *ser, uint16_t id, lv_grid_align_t value){
 	lv_chart_set_value_by_id(cObj.get(),ser,id,value);
 	return *this;
 }
-LvChart& LvChart::setValueById2(lv_chart_series_t *ser, uint16_t id, lv_coord_t x_value, lv_coord_t y_value){
+LvChart& LvChart::setValueById2(lv_chart_series_t *ser, uint16_t id, lv_grid_align_t x_value, lv_grid_align_t y_value){
 	lv_chart_set_value_by_id2(cObj.get(),ser,id,x_value,y_value);
 	return *this;
 }
-LvChart& LvChart::setExtYArray(lv_chart_series_t *ser, lv_coord_t array[]){
+LvChart& LvChart::setExtYArray(lv_chart_series_t *ser, int32_t array[]){
 	lv_chart_set_ext_y_array(cObj.get(),ser,array);
 	return *this;
 }
-LvChart& LvChart::setExtXArray(lv_chart_series_t *ser, lv_coord_t array[]){
+LvChart& LvChart::setExtXArray(lv_chart_series_t *ser, int32_t array[]){
 	lv_chart_set_ext_x_array(cObj.get(),ser,array);
 	return *this;
 }
-lv_coord_t *LvChart::getYArray(lv_chart_series_t *ser) const noexcept {
+int32_t *LvChart::getYArray(lv_chart_series_t *ser) const noexcept {
 	return lv_chart_get_y_array(cObj.get(),ser);
 	
 }
-lv_coord_t *LvChart::getXArray(lv_chart_series_t *ser) const noexcept {
+int32_t *LvChart::getXArray(lv_chart_series_t *ser) const noexcept {
 	return lv_chart_get_x_array(cObj.get(),ser);
 	
 }

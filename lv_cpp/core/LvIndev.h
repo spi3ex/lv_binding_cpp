@@ -16,12 +16,11 @@ namespace lvglpp {
 
 class LvInput {
 private:
-	lv_indev_drv_t indev_drv;
-	LvPointer<lv_indev_t,lv_mem_free> indev;
+	LvPointer<lv_indev_t,lv_free> indev;
 	LvPointerUnique<LvImg> Cursor;
 public:
 	LvInput();
-	LvInput(lv_indev_drv_t *drv);
+	LvInput(lv_indev_t *drv);
 	virtual ~LvInput();
 
 	LvInput& setCursor(LvImg& Img);

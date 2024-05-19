@@ -14,7 +14,7 @@ namespace lvglpp {
 class LvAnim {
 private:
 	
-	LvPointer<lv_anim_t, lv_mem_free> cObj;
+	LvPointer<lv_anim_t, lv_free> cObj;
 public:
 	LvAnim();
 	virtual ~LvAnim();

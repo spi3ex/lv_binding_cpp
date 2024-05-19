@@ -15,10 +15,10 @@ public:
 	LvImgbtn();
 	LvImgbtn(LvObj* Parent);
 	virtual ~LvImgbtn() override;
-	LvImgbtn& setSrc(lv_imgbtn_state_t state, const void *src_left, const void *src_mid, const void *src_right);
-	const void *getSrcLeft(lv_imgbtn_state_t state) const noexcept ;
-	const void *getSrcMiddle(lv_imgbtn_state_t state) const noexcept ;
-	const void *getSrcRight(lv_imgbtn_state_t state) const noexcept ;
+	LvImgbtn& setSrc(lv_imagebutton_state_t state, const void *src_left, const void *src_mid, const void *src_right);
+	const void *getSrcLeft(lv_imagebutton_state_t state) const noexcept ;
+	const void *getSrcMiddle(lv_imagebutton_state_t state) const noexcept ;
+	const void *getSrcRight(lv_imagebutton_state_t state) const noexcept ;
 };
 
 } /* namespace lvglpp */
