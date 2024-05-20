@@ -41,12 +41,13 @@ LvDisplay::LvDisplay(lv_display_t *drv) :
 
 LvDisplay::LvDisplay(lv_display_t *drv, int32_t hres, int32_t vres) {
 
-	disp_drv.reset((lv_display_t*)lv_malloc(sizeof(lv_display_t)));
-	disp_buf1.reset((lv_disp_draw_buf_t*)lv_malloc(sizeof(lv_disp_draw_buf_t)));
+	disp_drv.reset(lv_display_create(hres, vres));
+	disp_buf1.reset((lv_draw_buf_t*)lv_malloc(sizeof(lv_draw_buf_t)));
+	disp_buf2.reset((lv_draw_buf_t*)lv_malloc(sizeof(lv_draw_buf_t)));
 
-	lv_display_drv_init(disp_drv.get());
 	int32_t w = 0;
 	int32_t h = 0;
+	lv_display_render_mode_t render_mode = LV_DISP_RENDER_MODE_FULL;
 
 #if USE_MONITOR
 	monitor_init();
@@ -75,25 +76,26 @@ LvDisplay::LvDisplay(lv_display_t *drv, int32_t hres, int32_t vres) {
 #if !LV_DISP_BUFFER_STATIC
 	buf1_1.reset((lv_color_t*)lv_malloc(h * 100));
 	buf1_2.reset((lv_color_t*)lv_malloc(h * 100));
-	lv_disp_draw_buf_init(disp_buf1.get(), buf1_1.get(), buf1_2.get(), w * 100);
+	lv_display_set_buffers(disp_drv.get(), buf1_1, buf1_2, w * 100,render_mode);
 #else
 	static lv_color_t buf1_1[MONITOR_HOR_RES * 100];
 	static lv_color_t buf1_2[MONITOR_HOR_RES * 100];
-	lv_disp_draw_buf_init(disp_buf1.get(), buf1_1, buf1_2, MONITOR_HOR_RES * 100);
+	lv_display_set_buffers(disp_drv.get(), buf1_1, buf1_2, MONITOR_HOR_RES * 100,render_mode);
 #endif
 
 	/* Initialize with basic configuration*/
 	if (!drv) {
 		/*Create a display*/
-		disp_drv->draw_buf = disp_buf1.get();
+		disp_drv->buf_1 = disp_buf1.get();
+		disp_drv->buf_2 = disp_buf2.get();
 		disp_drv->antialiasing = 1;
 		disp_drv->sw_rotate = 1;
 		disp_drv->hor_res = w;
 		disp_drv->ver_res = h;
-		disp_drv->rotated = LV_DISPLAY_ROTATION_0;
+		disp_drv->rotation = LV_DISPLAY_ROTATION_0;
 	} else
-		memcpy(disp_drv.get(), drv, sizeof(lv_display_t));
-	disp.reset(lv_disp_drv_register(disp_drv.get()));
+	   //memcpy(disp_drv.get(), drv, sizeof(lv_display_t));
+	   // disp.reset(lv_display_get_default());
 	void(0);
 }
 

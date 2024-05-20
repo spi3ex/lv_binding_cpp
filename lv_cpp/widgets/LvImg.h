@@ -18,9 +18,9 @@ public:
 	LvImg& setSrc(const void *src);
 	LvImg& setOffsetX(lv_grid_align_t x);
 	LvImg& setOffsetY(lv_grid_align_t y);
-	LvImg& setAngle(int16_t angle);
+	LvImg& setAngle(int32_t angle);
 	LvImg& setPivot(lv_grid_align_t x, lv_grid_align_t y);
-	LvImg& setZoom(uint16_t zoom);
+	LvImg& setZoom(uint32_t zoom);
 	LvImg& setAntialias(bool antialias);
 	const void *getSrc() const noexcept ;
 	int32_t getOffsetX() const noexcept ;

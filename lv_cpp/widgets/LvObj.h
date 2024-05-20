@@ -9,8 +9,8 @@
 #define LVOBJ_H_
 
 #include <list>
-#include "lvglpp.h"
-#include "LvEvent.h"
+#include "../core/lvglpp.h"
+#include "../core/LvEvent.h"
 #include "../misc/LvStyle.h"
 
 
@@ -50,21 +50,21 @@ public:
 	lv_flex_align_t getStyleFlexCrossPlace(int32_t part) const noexcept ;
 	lv_flex_align_t getStyleFlexTrackPlace(int32_t part) const noexcept ;
 	uint8_t getStyleFlexGrow(int32_t part) const noexcept ;
-	const lv_grid_align_t *getStyleGridRowDscArray(int32_t part) const noexcept ;
-	const lv_grid_align_t *getStyleGridColumnDscArray(int32_t part) const noexcept ;
-	lv_grid_align_t getStyleGridRowAlign(int32_t part) const noexcept ;
-	lv_grid_align_t getStyleGridColumnAlign(int32_t part) const noexcept ;
-	lv_grid_align_t getStyleGridCellColumnPos(int32_t part) const noexcept ;
-	lv_grid_align_t getStyleGridCellColumnSpan(int32_t part) const noexcept ;
-	lv_grid_align_t getStyleGridCellRowPos(int32_t part) const noexcept ;
-	lv_grid_align_t getStyleGridCellRowSpan(int32_t part) const noexcept ;
+	const int32_t *getStyleGridRowDscArray(int32_t part) const noexcept ;
+	const int32_t *getStyleGridColumnDscArray(int32_t part) const noexcept ;
+	int32_t getStyleGridRowAlign(int32_t part) const noexcept ;
+	int32_t getStyleGridColumnAlign(int32_t part) const noexcept ;
+	int32_t getStyleGridCellColumnPos(int32_t part) const noexcept ;
+	int32_t getStyleGridCellColumnSpan(int32_t part) const noexcept ;
+	int32_t getStyleGridCellRowPos(int32_t part) const noexcept ;
+	int32_t getStyleGridCellRowSpan(int32_t part) const noexcept ;
 	lv_grid_align_t getStyleGridCellXAlign(int32_t part) const noexcept ;
 	lv_grid_align_t getStyleGridCellYAlign(int32_t part) const noexcept ;
 	lv_theme_t *getTheme() const noexcept;
-	struct lv_event_dsc_t *addEventCb(lv_event_cb_t event_cb, lv_event_code_t filter, void *user_data);
+	lv_event_dsc_t *addEventCb(lv_event_cb_t event_cb, lv_event_code_t filter, void *user_data);
 	bool removeEventCb(lv_event_cb_t event_cb);
-	bool removeEventCbWithUserData(lv_event_cb_t event_cb, const void *user_data);
-	bool removeEventDsc(struct lv_event_dsc_t *event_dsc);
+	int32_t removeEventCbWithUserData(lv_event_cb_t event_cb, void *user_data);
+	bool removeEventDsc(lv_event_dsc_t *event_dsc);
 	LvObj& classInitObj();
 	LvObj& destruct();
 	bool isEditable();
@@ -128,17 +128,17 @@ public:
 	LvObj& align(lv_align_t align, lv_grid_align_t x_ofs, lv_grid_align_t y_ofs);
 	LvObj& alignTo(const lv_obj_t *base, lv_align_t align, lv_grid_align_t x_ofs, lv_grid_align_t y_ofs);
 	LvObj& getCoords(lv_area_t *coords);
-	lv_grid_align_t getX() const noexcept ;
-	lv_grid_align_t getX2() const noexcept ;
-	lv_grid_align_t getY() const noexcept ;
-	lv_grid_align_t getY2() const noexcept ;
-	lv_grid_align_t getWidth() const noexcept ;
-	lv_grid_align_t getHeight() const noexcept ;
-	lv_grid_align_t getContentWidth() const noexcept ;
-	lv_grid_align_t getContentHeight() const noexcept ;
+	int32_t getX() const noexcept ;
+	int32_t getX2() const noexcept ;
+	int32_t getY() const noexcept ;
+	int32_t getY2() const noexcept ;
+	int32_t getWidth() const noexcept ;
+	int32_t getHeight() const noexcept ;
+	int32_t getContentWidth() const noexcept ;
+	int32_t getContentHeight() const noexcept ;
 	LvObj& getContentCoords(lv_area_t *area);
-	lv_grid_align_t getSelfWidth() const noexcept ;
-	lv_grid_align_t getSelfHeight() const noexcept ;
+	int32_t getSelfWidth() const noexcept ;
+	int32_t getSelfHeight() const noexcept ;
 	bool refreshSelfSize();
 	LvObj& refrPos();
 	LvObj& moveTo(lv_grid_align_t x, lv_grid_align_t y);
@@ -166,7 +166,7 @@ public:
 	LvObj& initDrawImgDsc(int32_t part, lv_draw_image_dsc_t *draw_dsc);
 	LvObj& initDrawLineDsc(int32_t part, lv_draw_line_dsc_t *draw_dsc);
 	LvObj& initDrawArcDsc(int32_t part, lv_draw_arc_dsc_t *draw_dsc);
-	LvObj&  calculateExtDrawSize(int32_t part);
+	int32_t  calculateExtDrawSize(int32_t part);
 	LvObj& refreshExtDrawSize();
 	int32_t  getExtDrawSize() const noexcept ;
 	LvObj& setFlexFlow(lv_flex_flow_t flow);

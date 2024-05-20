@@ -37,10 +37,10 @@ void *LvObj::getUserData() const noexcept {
 	return lv_obj_get_user_data(cObj.get());
 	
 }
-lv_grid_align_t LvObj::dpx(lv_grid_align_t n){
-	return lv_obj_dpx(cObj.get(),n);
+// int32_t LvObj::dpx(){
+// 	return lv_display_get_dpi(cObj.get());
 	
-}
+// }
 LvObj& LvObj::del(){
 	lv_obj_del(cObj.get());
 	return *this;
@@ -50,7 +50,7 @@ LvObj& LvObj::clean(){
 	return *this;
 }
 LvObj& LvObj::delDelayed(int32_t delay_ms){
-	lv_obj_del_delayed(cObj.get(),delay_ms);
+	lv_obj_delete_delayed(cObj.get(),delay_ms);
 	return *this;
 }
 LvObj& LvObj::delAsync(){
@@ -117,43 +117,43 @@ uint8_t LvObj::getStyleFlexGrow(int32_t part) const noexcept {
 	return lv_obj_get_style_flex_grow(cObj.get(),part);
 	
 }
-const lv_grid_align_t *LvObj::getStyleGridRowDscArray(int32_t part) const noexcept {
+const int32_t *LvObj::getStyleGridRowDscArray(int32_t part) const noexcept {
 	return lv_obj_get_style_grid_row_dsc_array(cObj.get(),part);
 	
 }
-const lv_grid_align_t *LvObj::getStyleGridColumnDscArray(int32_t part) const noexcept {
+const int32_t *LvObj::getStyleGridColumnDscArray(int32_t part) const noexcept {
 	return lv_obj_get_style_grid_column_dsc_array(cObj.get(),part);
 	
 }
-lv_grid_align_t LvObj::getStyleGridRowAlign(int32_t part) const noexcept {
+int32_t LvObj::getStyleGridRowAlign(int32_t part) const noexcept {
 	return lv_obj_get_style_grid_row_align(cObj.get(),part);
 	
 }
-lv_grid_align_t LvObj::getStyleGridColumnAlign(int32_t part) const noexcept {
+int32_t LvObj::getStyleGridColumnAlign(int32_t part) const noexcept {
 	return lv_obj_get_style_grid_column_align(cObj.get(),part);
 	
 }
-lv_grid_align_t LvObj::getStyleGridCellColumnPos(int32_t part) const noexcept {
+int32_t LvObj::getStyleGridCellColumnPos(int32_t part) const noexcept {
 	return lv_obj_get_style_grid_cell_column_pos(cObj.get(),part);
 	
 }
-lv_grid_align_t LvObj::getStyleGridCellColumnSpan(int32_t part) const noexcept {
+int32_t LvObj::getStyleGridCellColumnSpan(int32_t part) const noexcept {
 	return lv_obj_get_style_grid_cell_column_span(cObj.get(),part);
 	
 }
-lv_grid_align_t LvObj::getStyleGridCellRowPos(int32_t part) const noexcept {
+int32_t LvObj::getStyleGridCellRowPos(int32_t part) const noexcept {
 	return lv_obj_get_style_grid_cell_row_pos(cObj.get(),part);
 	
 }
-lv_grid_align_t LvObj::getStyleGridCellRowSpan(int32_t part) const noexcept {
+int32_t LvObj::getStyleGridCellRowSpan(int32_t part) const noexcept {
 	return lv_obj_get_style_grid_cell_row_span(cObj.get(),part);
 	
 }
-lv_grid_align_t LvObj::getStyleGridCellXAlign(int32_t part) const noexcept {
+int32_t LvObj::getStyleGridCellXAlign(int32_t part) const noexcept {
 	return lv_obj_get_style_grid_cell_x_align(cObj.get(),part);
 	
 }
-lv_grid_align_t LvObj::getStyleGridCellYAlign(int32_t part) const noexcept {
+int32_t LvObj::getStyleGridCellYAlign(int32_t part) const noexcept {
 	return lv_obj_get_style_grid_cell_y_align(cObj.get(),part);
 	
 }
@@ -161,7 +161,7 @@ lv_theme_t *LvObj::getTheme() const noexcept {
 	return lv_theme_get_from_obj(cObj.get());
 	
 }
-struct lv_event_dsc_t *LvObj::addEventCb(lv_event_cb_t event_cb, lv_event_code_t filter, void *user_data){
+lv_event_dsc_t *LvObj::addEventCb(lv_event_cb_t event_cb, lv_event_code_t filter, void *user_data){
 	return lv_obj_add_event_cb(cObj.get(),event_cb,filter,user_data);
 	
 }
@@ -169,7 +169,7 @@ bool LvObj::removeEventCb(lv_event_cb_t event_cb){
 	return lv_obj_remove_event_cb(cObj.get(),event_cb);
 	
 }
-bool LvObj::removeEventCbWithUserData(lv_event_cb_t event_cb, const void *user_data){
+bool LvObj::removeEventCbWithUserData(lv_event_cb_t event_cb, void *user_data){
 	return lv_obj_remove_event_cb_with_user_data(cObj.get(),event_cb,user_data);
 	
 }
@@ -653,19 +653,19 @@ LvObj& LvObj::setStyleGridColumnAlign(lv_grid_align_t value, lv_style_selector_t
 	lv_obj_set_style_grid_column_align(cObj.get(),value,selector);
 	return *this;
 }
-LvObj& LvObj::setStyleGridCellColumnPos(lv_grid_align_t value, lv_style_selector_t selector){
+LvObj& LvObj::setStyleGridCellColumnPos(int32_t value, lv_style_selector_t selector){
 	lv_obj_set_style_grid_cell_column_pos(cObj.get(),value,selector);
 	return *this;
 }
-LvObj& LvObj::setStyleGridCellColumnSpan(lv_grid_align_t value, lv_style_selector_t selector){
+LvObj& LvObj::setStyleGridCellColumnSpan(int32_t value, lv_style_selector_t selector){
 	lv_obj_set_style_grid_cell_column_span(cObj.get(),value,selector);
 	return *this;
 }
-LvObj& LvObj::setStyleGridCellRowPos(lv_grid_align_t value, lv_style_selector_t selector){
+LvObj& LvObj::setStyleGridCellRowPos(int32_t value, lv_style_selector_t selector){
 	lv_obj_set_style_grid_cell_row_pos(cObj.get(),value,selector);
 	return *this;
 }
-LvObj& LvObj::setStyleGridCellRowSpan(lv_grid_align_t value, lv_style_selector_t selector){
+LvObj& LvObj::setStyleGridCellRowSpan(int32_t value, lv_style_selector_t selector){
 	lv_obj_set_style_grid_cell_row_span(cObj.get(),value,selector);
 	return *this;
 }

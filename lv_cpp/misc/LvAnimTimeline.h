@@ -14,7 +14,7 @@ namespace lvglpp {
 class LvAnimTimeline {
 private:
 	
-	LvPointer<lv_anim_timeline_t, lv_anim_delete> cObj;
+	LvPointer<lv_anim_timeline_t, lv_free> cObj;
 public:
 	LvAnimTimeline();
 	virtual ~LvAnimTimeline();

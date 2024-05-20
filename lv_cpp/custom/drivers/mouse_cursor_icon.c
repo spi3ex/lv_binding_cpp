@@ -95,7 +95,6 @@ const uint8_t mouse_cursor_icon_map[] = {
 };
 
 lv_image_dsc_t mouse_cursor_icon = {
-    .header.always_zero = 0,
     .header.w = 14,
     .header.h = 20,
     .data_size = sizeof(mouse_cursor_icon_map),

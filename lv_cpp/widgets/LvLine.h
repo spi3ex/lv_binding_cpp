@@ -15,7 +15,7 @@ public:
 	LvLine();
 	LvLine(LvObj* Parent);
 	virtual ~LvLine() override;
-	LvLine& setPoints(const lv_point_t points[], uint16_t point_num);
+	LvLine& setPoints(const lv_point_precise_t points[], uint32_t point_num);
 	LvLine& setYInvert(bool en);
 	bool getYInvert() const noexcept ;
 };

@@ -33,16 +33,16 @@ LvImg& LvImg::setOffsetY(lv_grid_align_t y){
 	lv_image_set_offset_y(cObj.get(),y);
 	return *this;
 }
-LvImg& LvImg::setAngle(int16_t angle){
-	lv_image_set_angle(cObj.get(),angle);
+LvImg& LvImg::setAngle(int32_t angle){
+	lv_image_set_rotation(cObj.get(),angle);
 	return *this;
 }
 LvImg& LvImg::setPivot(lv_grid_align_t x, lv_grid_align_t y){
 	lv_image_set_pivot(cObj.get(),x,y);
 	return *this;
 }
-LvImg& LvImg::setZoom(uint16_t zoom){
-	lv_image_set_zoom(cObj.get(),zoom);
+LvImg& LvImg::setZoom(uint32_t zoom){
+	lv_image_set_scale(cObj.get(),zoom);
 	return *this;
 }
 LvImg& LvImg::setAntialias(bool antialias){
@@ -62,7 +62,7 @@ int32_t LvImg::getOffsetY() const noexcept {
 	
 }
 uint16_t LvImg::getAngle() const noexcept {
-	return lv_image_get_angle(cObj.get());
+	return lv_image_get_scale(cObj.get());
 	
 }
 LvImg& LvImg::getPivot(lv_point_t *pivot){
@@ -70,7 +70,7 @@ LvImg& LvImg::getPivot(lv_point_t *pivot){
 	return *this;
 }
 uint16_t LvImg::getZoom() const noexcept {
-	return lv_image_get_zoom(cObj.get());
+	return lv_image_get_scale(cObj.get());
 	
 }
 bool LvImg::getAntialias() const noexcept {
