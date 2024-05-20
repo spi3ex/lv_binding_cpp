@@ -11,6 +11,7 @@
 #include <lv_drv_conf.h>
 #include "lvglpp.h"
 #include "../../lvgl/src/display/lv_display_private.h"
+#include "../../lvgl/src/display/lv_display.h"
 
 #ifndef LV_DISP_BUFFER_STATIC
 #define LV_DISP_BUFFER_STATIC 1
@@ -21,6 +22,7 @@ namespace lvglpp {
 class LvDisplay {
 private:
 	LvPointer<lv_draw_buf_t,lv_free> disp_buf1;
+	LvPointer<lv_draw_buf_t,lv_free> disp_buf2;
 	LvPointer<lv_display_t,lv_free> disp_drv;
 
 #if !LV_DISP_BUFFER_STATIC

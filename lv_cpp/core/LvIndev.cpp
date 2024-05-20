@@ -9,7 +9,7 @@
 
 /* Default cursor for pointer */
 extern "C" {
-	LV_image_DECLARE(mouse_cursor_icon);
+	LV_IMAGE_DECLARE(mouse_cursor_icon);
 }
 
 #if (USE_MOUSE + USE_EVDEV + USE_LINMICE + USE_LIBINPUT) > 1
@@ -43,47 +43,47 @@ LvInput::LvInput() :
 
 }
 
-LvInput::LvInput(lv_indev_data_t *drv) {
+LvInput::LvInput(lv_indev_t *drv) {
 
-	lv_indev_drv_init(&indev_drv); /*Basic initialization*/
+	indev_drv.reset(lv_indev_create());/*Basic initialization*/
 
 	if (!drv) {
 
 #if USE_MOUSE
 		mouse_init();
-		indev_drv.read_cb = mouse_read;
+		lv_indev_set_read_cb(indev_drv.get(), mouse_read);
 #endif
 
 #if USE_EVDEV
 		evdev_init();
-		indev_drv.read_cb = evdev_read;
+		lv_indev_set_read_cb(indev_drv.get(), evdev_read);
 #endif
 
 #if USE_LIBINPUT
 		libinput_init();
-		indev_drv.read_cb = libinput_read;
+		lv_indev_set_read_cb(indev_drv.get(), libinput_read);
 #endif
 
 #if USE_LINMICE
 		linmice_init();
-		indev_drv.read_cb = linmice_read;
+		lv_indev_set_read_cb(indev_drv.get(), linmice_read);
 #endif
 
 #if USE_MOUSE | USE_EVDEV | USE_LINMICE | USE_LIBINPUT
-		indev_drv.type = LV_INDEV_TYPE_POINTER;
+		lv_indev_set_type(indev_drv.get(), LV_INDEV_TYPE_POINTER);
 #endif
 
 	} else {
-		memcpy(&indev_drv, drv, sizeof(lv_indev_data_t));
+		//memcpy(indev_drv.get(), drv, sizeof(lv_indev_t));
 	}
 
-	indev.reset(lv_indev_drv_register(&indev_drv));
+	//indev.reset(lv_indev_enable(&indev_drv));
 
 }
 
 
 LvInput& LvInput::setCursor(LvImg& Img) {
-	lv_indev_set_cursor(indev.get(), Img.raw());
+	lv_indev_set_cursor(indev_drv.get(), Img.raw());
 	return *this;
 }
 
