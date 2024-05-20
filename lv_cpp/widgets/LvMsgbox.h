@@ -14,7 +14,7 @@ class LvMsgbox: public LvObj {
 public:
 	LvMsgbox();
 	LvMsgbox(LvObj* Parent);
-	LvMsgbox(LvObj* Parent,const char * title, const char * txt, const char * btn_txts[], bool add_close_btn);
+	LvMsgbox(LvObj* Parent,const char * title, const char * txt, const char * btn_txts, bool add_close_btn);
 	virtual ~LvMsgbox() override;
 };
 

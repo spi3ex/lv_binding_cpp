@@ -21,7 +21,7 @@ LvLine::LvLine(LvObj* Parent) : LvObj(Parent) {
 
 LvLine::~LvLine() {
 }
-LvLine& LvLine::setPoints(const lv_point_t points[], uint16_t point_num){
+LvLine& LvLine::setPoints(const lv_point_precise_t points[], uint32_t point_num){
 	lv_line_set_points(cObj.get(),points,point_num);
 	return *this;
 }

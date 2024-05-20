@@ -3,7 +3,7 @@
  *
  */
 
-#include "LvStyle.h"
+#include "../misc/LvStyle.h"
 
 namespace lvglpp {
 
@@ -39,7 +39,7 @@ LvStyle& LvStyle::setPadGap(lv_grid_align_t value){
 	return *this;
 }
 LvStyle& LvStyle::setSize(lv_style_t * style, int32_t width, int32_t height){
-	lv_style_set_size(cObj.get(),value);
+	lv_style_set_size(style,width,height);
 	return *this;
 }
 LvStyle& LvStyle::init(){
@@ -442,11 +442,11 @@ LvStyle& LvStyle::setFlexGrow(uint8_t value){
 	lv_style_set_flex_grow(cObj.get(),value);
 	return *this;
 }
-LvStyle& LvStyle::setGridRowDscArray(const lv_grid_align_t value[]){
+LvStyle& LvStyle::setGridRowDscArray(const int32_t value[]){
 	lv_style_set_grid_row_dsc_array(cObj.get(),value);
 	return *this;
 }
-LvStyle& LvStyle::setGridColumnDscArray(const lv_grid_align_t value[]){
+LvStyle& LvStyle::setGridColumnDscArray(const int32_t value[]){
 	lv_style_set_grid_column_dsc_array(cObj.get(),value);
 	return *this;
 }

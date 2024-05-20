@@ -38,12 +38,12 @@ LvLabel& LvLabel::setLongMode(lv_label_long_mode_t long_mode){
 // 	lv_label_set_recolor(cObj.get(),en);
 // 	return *this;
 // }
-LvLabel& LvLabel::setTextSelStart(uint32_t index){
-	lv_label_get_text_selection_start(cObj.get(),index);
+LvLabel& LvLabel::setTextSelStart(){
+	lv_label_get_text_selection_start(cObj.get());
 	return *this;
 }
-LvLabel& LvLabel::setTextSelEnd(uint32_t index){
-	lv_label_get_text_selection_start(cObj.get(),index);
+LvLabel& LvLabel::setTextSelEnd(){
+	lv_label_get_text_selection_end(cObj.get());
 	return *this;
 }
 char *LvLabel::getText() const noexcept {

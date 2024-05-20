@@ -21,52 +21,52 @@ LvTable::LvTable(LvObj* Parent) : LvObj(Parent) {
 
 LvTable::~LvTable() {
 }
-LvTable& LvTable::setCellValue(uint16_t row, uint16_t col, const char *txt){
+LvTable& LvTable::setCellValue(uint32_t row, uint32_t col, const char *txt){
 	lv_table_set_cell_value(cObj.get(),row,col,txt);
 	return *this;
 }
 
-LvTable& LvTable::setRowCnt(uint16_t row_cnt){
-	lv_table_set_row_cnt(cObj.get(),row_cnt);
+LvTable& LvTable::setRowCnt(uint32_t row_cnt){
+	lv_table_set_row_count(cObj.get(),row_cnt);
 	return *this;
 }
-LvTable& LvTable::setColCnt(uint16_t col_cnt){
-	lv_table_set_col_cnt(cObj.get(),col_cnt);
+LvTable& LvTable::setColCnt(uint32_t col_cnt){
+	lv_table_set_column_count(cObj.get(),col_cnt);
 	return *this;
 }
-LvTable& LvTable::setColWidth(uint16_t col_id, lv_grid_align_t w){
-	lv_table_set_col_width(cObj.get(),col_id,w);
+LvTable& LvTable::setColWidth(uint32_t col_id, lv_grid_align_t w){
+	lv_table_set_column_width(cObj.get(),col_id,w);
 	return *this;
 }
-LvTable& LvTable::addCellCtrl(uint16_t row, uint16_t col, lv_table_cell_ctrl_t ctrl){
+LvTable& LvTable::addCellCtrl(uint32_t row, uint32_t col, lv_table_cell_ctrl_t ctrl){
 	lv_table_add_cell_ctrl(cObj.get(),row,col,ctrl);
 	return *this;
 }
-LvTable& LvTable::clearCellCtrl(uint16_t row, uint16_t col, lv_table_cell_ctrl_t ctrl){
+LvTable& LvTable::clearCellCtrl(uint32_t row, uint32_t col, lv_table_cell_ctrl_t ctrl){
 	lv_table_clear_cell_ctrl(cObj.get(),row,col,ctrl);
 	return *this;
 }
-const char *LvTable::getCellValue(uint16_t row, uint16_t col) const noexcept {
+const char *LvTable::getCellValue(uint32_t row, uint32_t col) const noexcept {
 	return lv_table_get_cell_value(cObj.get(),row,col);
 	
 }
-uint16_t LvTable::getRowCnt() const noexcept {
-	return lv_table_get_row_cnt(cObj.get());
+uint32_t LvTable::getRowCnt() const noexcept {
+	return lv_table_get_row_count(cObj.get());
 	
 }
-uint16_t LvTable::getColCnt() const noexcept {
-	return lv_table_get_col_cnt(cObj.get());
+uint32_t LvTable::getColCnt() const noexcept {
+	return lv_table_get_column_count(cObj.get());
 	
 }
-lv_grid_align_t LvTable::getColWidth(uint16_t col) const noexcept {
-	return lv_table_get_col_width(cObj.get(),col);
+int32_t LvTable::getColWidth(uint32_t col) const noexcept {
+	return lv_table_get_column_width(cObj.get(),col);
 	
 }
-bool LvTable::hasCellCtrl(uint16_t row, uint16_t col, lv_table_cell_ctrl_t ctrl){
+bool LvTable::hasCellCtrl(uint32_t row, uint32_t col, lv_table_cell_ctrl_t ctrl){
 	return lv_table_has_cell_ctrl(cObj.get(),row,col,ctrl);
 	
 }
-LvTable& LvTable::getSelectedCell(uint16_t *row, uint16_t *col){
+LvTable& LvTable::getSelectedCell(uint32_t *row, uint32_t *col){
 	lv_table_get_selected_cell(cObj.get(),row,col);
 	return *this;
 }

@@ -25,8 +25,8 @@ public:
 	LvLabel& setTextStatic(const char *text);
 	LvLabel& setLongMode(lv_label_long_mode_t long_mode);
 	LvLabel& setRecolor(bool en);
-	LvLabel& setTextSelStart(uint32_t index);
-	LvLabel& setTextSelEnd(uint32_t index);
+	LvLabel& setTextSelStart(void);
+	LvLabel& setTextSelEnd(void);
 	char *getText() const noexcept ;
 	lv_label_long_mode_t getLongMode() const noexcept ;
 	bool getRecolor() const noexcept ;
